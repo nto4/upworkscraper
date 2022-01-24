@@ -73,7 +73,7 @@ def scrape_data(SC_URL):
                 
                     tmp2 = tmp.split()
                     tmp3 = tmp.split("__")
-                    tmp3 = tmp3[1].replace("__", " ")
+                    tmp3 = tmp3[-2].replace("__", " ")
 
                     # print(tmp2[-1])
                     # print(tmp2[-2])
@@ -149,6 +149,6 @@ def scrape_data(SC_URL):
 
 # unique(my_list)
 
-# print(scrape_data("/sc/albertville_senior_citizens_center_albertville_al"))
+print(scrape_data("/sc/steuben_county_council_on_aging_senior_center_angola_in"))
 
-# print(scrape_data("/sc/martling_senior_center_albertville_al"))
+print(scrape_data("/sc/martling_senior_center_albertville_al"))

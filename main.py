@@ -32,7 +32,7 @@ def run_state(state):
     return final
             #sleep(0.5)
 if __name__ == '__main__':
-    pool = multiprocessing.Pool(processes=8)
+    pool = multiprocessing.Pool(processes=6)
     # get state urls
     get_state.get_states()
     f = open("states.txt", "r")
