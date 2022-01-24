@@ -59,16 +59,39 @@ def scrape_data(SC_URL):
             # print(tmp)         
 
         elif c != 6:
-            # print(c)
-            c +=1
-            tmp = str(divtag)
-            tmp = tmp.replace("<div class=\"data-table\">","")
-            tmp = tmp.replace("</div>","")
-            tmp = tmp.replace(",","")
-            tmp = tmp.replace("\n","")
+            if c ==1:
+                c +=1
+                tmp = str(divtag)
+                tmp = tmp.replace("<div class=\"data-table\">","")
+                tmp = tmp.replace("</div>","")
+                tmp = tmp.replace("\n","")
+                ztmp = tmp.replace(","," ")
+                tmp = tmp.replace(",","__")
+                
 
-            result.append(tmp)
-            # print(tmp)
+            
+                tmp2 = tmp.split()
+                tmp3 = tmp.split("__")
+                tmp3 = tmp3[1].replace("__", " ")
+
+                # print(tmp2[-1])
+                # print(tmp2[-2])
+                # print(tmp3)
+                tmp = str(ztmp) + "," + str(tmp2[-1]) + "," + str(tmp2[-2]) + "," +  str(tmp3)
+                # print(tmp)
+                result.append(tmp)
+            else:
+                # print(c)
+                c +=1
+                tmp = str(divtag)
+                tmp = tmp.replace("<div class=\"data-table\">","")
+                tmp = tmp.replace("</div>","")
+                tmp = tmp.replace(",","")
+                tmp = tmp.replace("\n","")
+
+                result.append(tmp)
+
+                # print(tmp)
         else:
             # print(c)
             c +=1
@@ -91,10 +114,10 @@ def scrape_data(SC_URL):
     # for i in result:
     #     print(i)
     # f.write("Name,Address,Phone,Contact Name,Email address,Website,Details,Services,Age requirements,Operation Time")
-    f.write(str(result[0]) + "," + str(result[1]) + "," + str(result[3]) + "," + str(result[4])+ "," + str(result[5])+ "," + str(result[6])+ "," + str(result[7])+ "," + str(result[8]) + "," + str(result[9])  +"," + str(result[10])  +"," + str(result[11]) + "\n" )
+    s = str(result[0]) + "," + str(result[1]) + "," + str(result[3]) + "," + str(result[4])+ "," + str(result[5])+ "," + str(result[6])+ "," + str(result[7])+ "," + str(result[8]) + "," + str(result[9])  +"," + str(result[10])  +"," + str(result[11]) + "\n" 
+    return s
 
 
-    f.close()
 
     # for h1tag in divtag.find_all('div', {'class': 'data-table'}):
     #     name = str(h1tag)
@@ -122,6 +145,6 @@ def scrape_data(SC_URL):
 
 # unique(my_list)
 
-scrape_data("/sc/albertville_senior_citizens_center_albertville_al")
+# print(scrape_data("/sc/albertville_senior_citizens_center_albertville_al"))
 
-scrape_data("/sc/martling_senior_center_albertville_al")
+# print(scrape_data("/sc/martling_senior_center_albertville_al"))
